@@ -39,9 +39,8 @@ jobs:
           xcodebuild test \
             -project FitTrack.xcodeproj \
             -scheme FitTrack \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
+            -destination "platform=iOS Simulator,name=iPhone 15" \
             -derivedDataPath build \
-            -enableCodeCoverage YES \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
       - name: Build iOS Simulator App (.app) for Appetize.io

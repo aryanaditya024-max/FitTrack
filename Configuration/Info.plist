@@ -14,6 +14,8 @@
     <string>1</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
+    <key>UILaunchScreen</key>
+    <dict/>
     <key>NSHealthShareUsageDescription</key>
     <string>FitTrack accesses your steps, active calories, and distance to display your daily fitness progress and goal achievements.</string>
     <key>NSHealthUpdateUsageDescription</key>

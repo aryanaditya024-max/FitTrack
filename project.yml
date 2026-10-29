@@ -48,3 +48,14 @@ targets:
         CODE_SIGN_IDENTITY: ""
         CODE_SIGNING_REQUIRED: NO
         CODE_SIGNING_ALLOWED: NO
+
+schemes:
+  FitTrack:
+    build:
+      targets:
+        FitTrack: all
+    test:
+      targets:
+        - FitTrackTests
+    run:
+      config: Debug
