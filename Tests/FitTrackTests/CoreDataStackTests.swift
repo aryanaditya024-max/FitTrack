@@ -38,7 +38,7 @@ final class CoreDataStackTests: XCTestCase {
             entity.source = "manual_entry"
             entity.createdAt = Date()
             entity.updatedAt = Date()
-            entity.isDeleted = false
+            entity.isMarkedDeleted = false
             entity.syncStatus = 1
             entity.version = 1
         }

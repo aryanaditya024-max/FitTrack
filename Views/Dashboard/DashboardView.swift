@@ -1,11 +1,16 @@
 import SwiftUI
 
+@MainActor
 public struct DashboardView: View {
     @StateObject private var viewModel: DashboardViewModel
     @AppStorage("fittrack.units.isImperial") private var isImperial: Bool = false
     
-    public init(viewModel: DashboardViewModel = DashboardViewModel()) {
+    public init(viewModel: DashboardViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    public init() {
+        _viewModel = StateObject(wrappedValue: DashboardViewModel())
     }
     
     public var body: some View {

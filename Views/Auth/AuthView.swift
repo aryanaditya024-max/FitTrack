@@ -1,15 +1,21 @@
 import SwiftUI
 
+@MainActor
 public struct AuthView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: AuthViewModel
     public let onAuthenticated: () -> Void
     
     public init(
-        viewModel: AuthViewModel = AuthViewModel(),
+        viewModel: AuthViewModel,
         onAuthenticated: @escaping () -> Void = {}
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.onAuthenticated = onAuthenticated
+    }
+    
+    public init(onAuthenticated: @escaping () -> Void = {}) {
+        _viewModel = StateObject(wrappedValue: AuthViewModel())
         self.onAuthenticated = onAuthenticated
     }
     

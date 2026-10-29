@@ -8,7 +8,7 @@
         <attribute name="duration" optional="NO" attributeType="Double" defaultValueString="0.0"/>
         <attribute name="endDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="isDeleted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isMarkedDeleted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="source" optional="NO" attributeType="String" defaultValueString="manual_entry"/>
         <attribute name="startDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="syncStatus" optional="NO" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
@@ -23,7 +23,7 @@
         <attribute name="frequency" optional="NO" attributeType="String" defaultValueString="daily"/>
         <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isActive" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="isDeleted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isMarkedDeleted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="metricType" optional="NO" attributeType="String"/>
         <attribute name="startDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="syncStatus" optional="NO" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>

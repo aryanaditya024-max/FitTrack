@@ -12,7 +12,7 @@ extension CDGoal {
     @NSManaged public var frequency: String?
     @NSManaged public var id: UUID?
     @NSManaged public var isActive: Bool
-    @NSManaged public var isDeleted: Bool
+    @NSManaged public var isMarkedDeleted: Bool
     @NSManaged public var metricType: String?
     @NSManaged public var startDate: Date?
     @NSManaged public var syncStatus: Int16

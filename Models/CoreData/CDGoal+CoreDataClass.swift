@@ -21,7 +21,7 @@ public class CDGoal: NSManagedObject {
             isActive: isActive,
             createdAt: createdAt ?? Date(),
             updatedAt: updatedAt ?? Date(),
-            isDeleted: isDeleted,
+            isDeleted: isMarkedDeleted,
             syncStatus: status,
             version: version
         )
@@ -39,7 +39,7 @@ public class CDGoal: NSManagedObject {
         self.isActive = goal.isActive
         self.createdAt = goal.createdAt
         self.updatedAt = goal.updatedAt
-        self.isDeleted = goal.isDeleted
+        self.isMarkedDeleted = goal.isDeleted
         self.syncStatus = goal.syncStatus.rawValue
         self.version = goal.version
     }

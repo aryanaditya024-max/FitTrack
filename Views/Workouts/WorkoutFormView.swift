@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 public struct WorkoutFormView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: WorkoutEditorViewModel

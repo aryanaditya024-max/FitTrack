@@ -1,13 +1,18 @@
 import SwiftUI
 
+@MainActor
 public struct WorkoutsListView: View {
     @StateObject private var viewModel: WorkoutsViewModel
     @AppStorage("fittrack.units.isImperial") private var isImperial: Bool = false
     @State private var showingAddSheet: Bool = false
     @State private var selectedWorkoutForEdit: Workout? = nil
     
-    public init(viewModel: WorkoutsViewModel = WorkoutsViewModel()) {
+    public init(viewModel: WorkoutsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    public init() {
+        _viewModel = StateObject(wrappedValue: WorkoutsViewModel())
     }
     
     public var body: some View {

@@ -18,7 +18,7 @@ public final class LocalGoalRepository: GoalRepositoryProtocol, @unchecked Senda
         try await coreDataStack.performBackgroundTask { context in
             let request: NSFetchRequest<CDGoal> = CDGoal.fetchRequest()
             if !includeDeleted {
-                request.predicate = NSPredicate(format: "isDeleted == NO")
+                request.predicate = NSPredicate(format: "isMarkedDeleted == NO")
             }
             request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
             
@@ -30,7 +30,7 @@ public final class LocalGoalRepository: GoalRepositoryProtocol, @unchecked Senda
     public func fetchActiveGoals() async throws -> [FitnessGoal] {
         try await coreDataStack.performBackgroundTask { context in
             let request: NSFetchRequest<CDGoal> = CDGoal.fetchRequest()
-            request.predicate = NSPredicate(format: "isDeleted == NO AND isActive == YES")
+            request.predicate = NSPredicate(format: "isMarkedDeleted == NO AND isActive == YES")
             request.sortDescriptors = [NSSortDescriptor(key: "frequency", ascending: true)]
             
             let results = try context.fetch(request)
@@ -95,7 +95,7 @@ public final class LocalGoalRepository: GoalRepositoryProtocol, @unchecked Senda
             request.fetchLimit = 1
             
             if let existing = try context.fetch(request).first {
-                existing.isDeleted = true
+                existing.isMarkedDeleted = true
                 existing.updatedAt = Date()
                 existing.syncStatus = SyncStatus.pendingSync.rawValue
                 existing.version += 1

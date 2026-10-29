@@ -18,7 +18,7 @@ public final class LocalWorkoutRepository: WorkoutRepositoryProtocol, @unchecked
         try await coreDataStack.performBackgroundTask { context in
             let request: NSFetchRequest<CDWorkout> = CDWorkout.fetchRequest()
             if !includeDeleted {
-                request.predicate = NSPredicate(format: "isDeleted == NO")
+                request.predicate = NSPredicate(format: "isMarkedDeleted == NO")
             }
             request.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
             
@@ -41,7 +41,7 @@ public final class LocalWorkoutRepository: WorkoutRepositoryProtocol, @unchecked
         try await coreDataStack.performBackgroundTask { context in
             let request: NSFetchRequest<CDWorkout> = CDWorkout.fetchRequest()
             request.predicate = NSPredicate(
-                format: "isDeleted == NO AND startDate >= %@ AND startDate <= %@",
+                format: "isMarkedDeleted == NO AND startDate >= %@ AND startDate <= %@",
                 startDate as NSDate,
                 endDate as NSDate
             )
@@ -100,7 +100,7 @@ public final class LocalWorkoutRepository: WorkoutRepositoryProtocol, @unchecked
             request.fetchLimit = 1
             
             if let existing = try context.fetch(request).first {
-                existing.isDeleted = true
+                existing.isMarkedDeleted = true
                 existing.updatedAt = Date()
                 existing.syncStatus = SyncStatus.pendingSync.rawValue
                 existing.version += 1

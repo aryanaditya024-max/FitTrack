@@ -14,7 +14,7 @@ extension CDWorkout {
     @NSManaged public var duration: Double
     @NSManaged public var endDate: Date?
     @NSManaged public var id: UUID?
-    @NSManaged public var isDeleted: Bool
+    @NSManaged public var isMarkedDeleted: Bool
     @NSManaged public var source: String?
     @NSManaged public var startDate: Date?
     @NSManaged public var syncStatus: Int16

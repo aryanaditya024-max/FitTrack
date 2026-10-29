@@ -23,7 +23,7 @@ public class CDWorkout: NSManagedObject {
             source: src,
             createdAt: createdAt ?? Date(),
             updatedAt: updatedAt ?? Date(),
-            isDeleted: isDeleted,
+            isDeleted: isMarkedDeleted,
             syncStatus: status,
             version: version
         )
@@ -43,7 +43,7 @@ public class CDWorkout: NSManagedObject {
         self.source = workout.source.rawValue
         self.createdAt = workout.createdAt
         self.updatedAt = workout.updatedAt
-        self.isDeleted = workout.isDeleted
+        self.isMarkedDeleted = workout.isDeleted
         self.syncStatus = workout.syncStatus.rawValue
         self.version = workout.version
     }

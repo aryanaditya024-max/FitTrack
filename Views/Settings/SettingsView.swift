@@ -1,12 +1,19 @@
 import SwiftUI
 
+@MainActor
 public struct SettingsView: View {
     @StateObject private var viewModel: SettingsViewModel
-    @StateObject private var authViewModel = AuthViewModel()
+    @StateObject private var authViewModel: AuthViewModel
     @State private var showingAuthSheet: Bool = false
     
-    public init(viewModel: SettingsViewModel = SettingsViewModel()) {
+    public init(viewModel: SettingsViewModel, authViewModel: AuthViewModel? = nil) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        _authViewModel = StateObject(wrappedValue: authViewModel ?? AuthViewModel())
+    }
+    
+    public init() {
+        _viewModel = StateObject(wrappedValue: SettingsViewModel())
+        _authViewModel = StateObject(wrappedValue: AuthViewModel())
     }
     
     public var body: some View {

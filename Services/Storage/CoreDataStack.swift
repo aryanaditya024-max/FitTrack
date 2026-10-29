@@ -153,7 +153,7 @@ public final class CoreDataStack: @unchecked Sendable {
         wUpdated.isOptional = false
         
         let wDel = NSAttributeDescription()
-        wDel.name = "isDeleted"
+        wDel.name = "isMarkedDeleted"
         wDel.attributeType = .booleanAttributeType
         wDel.isOptional = false
         wDel.defaultValue = false
@@ -235,7 +235,7 @@ public final class CoreDataStack: @unchecked Sendable {
         gUpdated.isOptional = false
         
         let gDel = NSAttributeDescription()
-        gDel.name = "isDeleted"
+        gDel.name = "isMarkedDeleted"
         gDel.attributeType = .booleanAttributeType
         gDel.isOptional = false
         gDel.defaultValue = false

@@ -1,12 +1,17 @@
 import SwiftUI
 
+@MainActor
 public struct GoalsView: View {
     @StateObject private var viewModel: GoalsViewModel
     @AppStorage("fittrack.units.isImperial") private var isImperial: Bool = false
     @State private var showingAddGoal: Bool = false
     
-    public init(viewModel: GoalsViewModel = GoalsViewModel()) {
+    public init(viewModel: GoalsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    public init() {
+        _viewModel = StateObject(wrappedValue: GoalsViewModel())
     }
     
     public var body: some View {

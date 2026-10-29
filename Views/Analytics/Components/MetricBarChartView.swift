@@ -30,7 +30,7 @@ public struct MetricBarChartView: View {
                     y: .value("Value", val)
                 )
                 .foregroundStyle(barGradient(for: metric))
-                .cornerRadius(6)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
             }
             
             // Average Reference Line

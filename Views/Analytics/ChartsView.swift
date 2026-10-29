@@ -1,12 +1,17 @@
 import SwiftUI
 import Charts
 
+@MainActor
 public struct ChartsView: View {
     @StateObject private var viewModel: ChartsViewModel
     @AppStorage("fittrack.units.isImperial") private var isImperial: Bool = false
     
-    public init(viewModel: ChartsViewModel = ChartsViewModel()) {
+    public init(viewModel: ChartsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    public init() {
+        _viewModel = StateObject(wrappedValue: ChartsViewModel())
     }
     
     public var body: some View {
