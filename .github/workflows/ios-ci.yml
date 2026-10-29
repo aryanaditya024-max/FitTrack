@@ -50,13 +50,14 @@ jobs:
 
       - name: Build iOS Simulator App (.app) for Appetize.io
         run: |
+          set -o pipefail
           xcodebuild \
             -project FitTrack.xcodeproj \
             -scheme FitTrack \
             -destination "generic/platform=iOS Simulator" \
             -configuration Debug \
             -derivedDataPath build \
-            build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+            build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO 2>&1 | tee xcodebuild.log || (echo "=== XCODEBUILD ERROR LOG ===" && tail -n 120 xcodebuild.log && exit 1)
 
       - name: Compress App Bundle for Appetize.io
         run: |
