@@ -1,18 +1,19 @@
-name: FitTrack iOS CI
+name: FitTrack iOS CI & Simulator Build
 
 on:
   push:
     branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: Build & Run XCTest Suite
+  build-and-test:
+    name: Test & Build for Appetize.io Simulator
     runs-on: macos-14
 
     steps:
@@ -27,8 +28,52 @@ jobs:
           xcodebuild -version
           swift --version
 
-      - name: Resolve Swift Package Dependencies
-        run: swift package resolve
+      - name: Install XcodeGen
+        run: brew install xcodegen
 
-      - name: Run FitTrack Unit Test Suite
-        run: swift test --enable-code-coverage
+      - name: Generate Native Xcode Project
+        run: xcodegen generate
+
+      - name: Run FitTrack Unit Test Suite on iOS Simulator
+        run: |
+          xcodebuild test \
+            -project FitTrack.xcodeproj \
+            -scheme FitTrack \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
+            -derivedDataPath build \
+            -enableCodeCoverage YES \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+
+      - name: Build iOS Simulator App (.app) for Appetize.io
+        run: |
+          xcodebuild \
+            -project FitTrack.xcodeproj \
+            -scheme FitTrack \
+            -destination "generic/platform=iOS Simulator" \
+            -configuration Debug \
+            -derivedDataPath build \
+            build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+
+      - name: Compress App Bundle for Appetize.io
+        run: |
+          cd build/Build/Products/Debug-iphonesimulator
+          zip -r FitTrack.app.zip FitTrack.app
+          ls -lh FitTrack.app.zip
+
+      - name: Upload Appetize.io Simulator Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FitTrack-iOS-Simulator
+          path: build/Build/Products/Debug-iphonesimulator/FitTrack.app.zip
+          retention-days: 14
+
+      - name: Optional Appetize.io Auto-Deploy
+        if: env.APPETIZE_API_TOKEN != ''
+        env:
+          APPETIZE_API_TOKEN: ${{ secrets.APPETIZE_API_TOKEN }}
+        run: |
+          echo "Uploading build to Appetize.io..."
+          RESPONSE=$(curl -s "https://${APPETIZE_API_TOKEN}@api.appetize.io/v1/apps" \
+            -F "file=@build/Build/Products/Debug-iphonesimulator/FitTrack.app.zip" \
+            -F "platform=ios")
+          echo "Appetize response: $RESPONSE"
