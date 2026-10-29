@@ -40,12 +40,12 @@ public struct AuthView: View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                         .padding()
-                        .background(Color(UIColor.secondarySystemBackground))
+                        .background(Color.fitSecondaryBackground)
                         .cornerRadius(12)
                     
                     SecureField("Password (min 6 characters)", text: $viewModel.password)
                         .padding()
-                        .background(Color(UIColor.secondarySystemBackground))
+                        .background(Color.fitSecondaryBackground)
                         .cornerRadius(12)
                     
                     if let error = viewModel.errorMessage {

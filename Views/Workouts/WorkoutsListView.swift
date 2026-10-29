@@ -34,7 +34,7 @@ public struct WorkoutsListView: View {
                     .padding(.horizontal)
                     .padding(.vertical, 10)
                 }
-                .background(Color(UIColor.systemBackground))
+                .background(Color.fitBackground)
                 
                 // Workout List
                 if viewModel.filteredWorkouts.isEmpty {
@@ -136,7 +136,7 @@ private struct FilterChip: View {
                 .fontWeight(isSelected ? .semibold : .regular)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 6)
-                .background(isSelected ? Color.blue : Color(UIColor.secondarySystemBackground))
+                .background(isSelected ? Color.blue : Color.fitSecondaryBackground)
                 .foregroundColor(isSelected ? .white : .primary)
                 .cornerRadius(18)
         }

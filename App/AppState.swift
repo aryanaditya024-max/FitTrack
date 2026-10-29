@@ -1,6 +1,10 @@
 import SwiftUI
 import Combine
 
+#if canImport(UIKit)
+import UIKit
+#endif
+
 @MainActor
 public final class AppState: ObservableObject {
     
@@ -72,6 +76,7 @@ public final class AppState: ObservableObject {
     }
     
     private func setupLifecycleObservers() {
+        #if canImport(UIKit)
         NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
             .sink { [weak self] _ in
                 Task { @MainActor [weak self] in
@@ -79,5 +84,6 @@ public final class AppState: ObservableObject {
                 }
             }
             .store(in: &cancellables)
+        #endif
     }
 }
