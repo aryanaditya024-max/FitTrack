@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22000" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDWorkout" representedClassName="CDWorkout" syncable="YES" codeGenerationType="manual">
+        <attribute name="activityType" optional="NO" attributeType="String"/>
+        <attribute name="caloriesBurned" optional="NO" attributeType="Double" defaultValueString="0.0"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="distance" optional="NO" attributeType="Double" defaultValueString="0.0"/>
+        <attribute name="duration" optional="NO" attributeType="Double" defaultValueString="0.0"/>
+        <attribute name="endDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isDeleted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="source" optional="NO" attributeType="String" defaultValueString="manual_entry"/>
+        <attribute name="startDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="syncStatus" optional="NO" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="title" optional="NO" attributeType="String"/>
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userId" optional="YES" attributeType="String"/>
+        <attribute name="version" optional="NO" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="CDGoal" representedClassName="CDGoal" syncable="YES" codeGenerationType="manual">
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="frequency" optional="NO" attributeType="String" defaultValueString="daily"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isActive" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="isDeleted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="metricType" optional="NO" attributeType="String"/>
+        <attribute name="startDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="syncStatus" optional="NO" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="targetValue" optional="NO" attributeType="Double" defaultValueString="0.0"/>
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userId" optional="YES" attributeType="String"/>
+        <attribute name="version" optional="NO" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="CDDailyMetricCache" representedClassName="CDDailyMetricCache" syncable="YES" codeGenerationType="manual">
+        <attribute name="activeEnergyKcal" optional="NO" attributeType="Double" defaultValueString="0.0"/>
+        <attribute name="date" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="distanceMeters" optional="NO" attributeType="Double" defaultValueString="0.0"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastFetchedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="source" optional="NO" attributeType="String" defaultValueString="sensor_healthkit"/>
+        <attribute name="stepCount" optional="NO" attributeType="Double" defaultValueString="0.0"/>
+    </entity>
+    <entity name="CDSyncQueueItem" representedClassName="CDSyncQueueItem" syncable="YES" codeGenerationType="manual">
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="entityId" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="entityType" optional="NO" attributeType="String"/>
+        <attribute name="errorMessage" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastAttempt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="operation" optional="NO" attributeType="String"/>
+        <attribute name="payload" optional="YES" attributeType="Binary"/>
+        <attribute name="retryCount" optional="NO" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+</model>

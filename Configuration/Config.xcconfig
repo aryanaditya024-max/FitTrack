@@ -1,0 +1,11 @@
+// ============================================================================
+// FitTrack Configuration: Config.xcconfig
+//
+// IMPORTANT SECURITY REQUIREMENTS:
+// 1. Only provide the SUPABASE_URL and the public SUPABASE_ANON_KEY here.
+// 2. NEVER put the service_role key, database passwords, or server secrets
+//    in this file or anywhere within the client iOS application.
+// ============================================================================
+
+SUPABASE_URL = https://your-project-id.supabase.co
+SUPABASE_ANON_KEY = your-public-anon-key-here
